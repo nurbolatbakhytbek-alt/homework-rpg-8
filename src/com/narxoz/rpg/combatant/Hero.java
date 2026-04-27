@@ -22,7 +22,7 @@ public class Hero {
         this.defense = defense;
     }
 
-    public String getName()        { return name; }
+    public String getName(boolean b)        { return name; }
     public int getHp()             { return hp; }
     public int getMaxHp()          { return maxHp; }
     public int getAttackPower()    { return attackPower; }
