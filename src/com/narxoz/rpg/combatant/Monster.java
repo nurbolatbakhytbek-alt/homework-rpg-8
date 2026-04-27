@@ -1,42 +1,29 @@
 package com.narxoz.rpg.combatant;
 
-/**
- * A simple monster encountered in a tower floor.
- * Used by floors that have combat challenges.
- */
 public class Monster {
-
     private final String name;
     private int hp;
+    private final int maxHp;
     private final int attackPower;
+    private final int defense;
 
-    public Monster(String name, int hp, int attackPower) {
+    public Monster(String name, int hp, int attackPower, int defense) {
         this.name = name;
         this.hp = hp;
+        this.maxHp = hp;
         this.attackPower = attackPower;
+        this.defense = defense;
     }
 
-    public String getName()       { return name; }
-    public int getHp()            { return hp; }
-    public int getAttackPower()   { return attackPower; }
-    public boolean isAlive()      { return hp > 0; }
+    public String getName() { return name; }
+    public int getHp() { return hp; }
+    public int getMaxHp() { return maxHp; }
+    public int getAttackPower() { return attackPower; }
+    public int getDefense() { return defense; }
+    public boolean isAlive() { return hp > 0; }
 
-    /**
-     * Reduces this monster's HP by the given amount, clamped to zero.
-     *
-     * @param amount the damage to apply
-     */
     public void takeDamage(int amount) {
-        hp = Math.max(0, hp - amount);
-    }
-
-    /**
-     * This monster attacks a hero, dealing damage.
-     *
-     * @param hero the target hero
-     */
-    public void attack(Hero hero) {
-        int damage = Math.max(1, this.attackPower - 2); // simple formula: attack power minus small defense value
-        hero.takeDamage(damage);
+        int actualDamage = Math.max(1, amount - defense);
+        hp = Math.max(0, hp - actualDamage);
     }
 }
