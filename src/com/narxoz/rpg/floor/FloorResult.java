@@ -1,21 +1,23 @@
 package com.narxoz.rpg.floor;
 
-/**
- * Holds the outcome of exploring a single tower floor.
- */
 public class FloorResult {
+    private final int floorNumber;
+    private final boolean success;
+    private final int heroHpRemaining;
+    private final int expGained;
+    private final int goldGained;
 
-    private final boolean cleared;
-    private final int damageTaken;
-    private final String summary;
-
-    public FloorResult(boolean cleared, int damageTaken, String summary) {
-        this.cleared = cleared;
-        this.damageTaken = damageTaken;
-        this.summary = summary;
+    public FloorResult(int floorNumber, boolean success, int heroHpRemaining, int expGained, int goldGained) {
+        this.floorNumber = floorNumber;
+        this.success = success;
+        this.heroHpRemaining = heroHpRemaining;
+        this.expGained = expGained;
+        this.goldGained = goldGained;
     }
 
-    public boolean isCleared()      { return cleared; }
-    public int getDamageTaken()     { return damageTaken; }
-    public String getSummary()      { return summary; }
+    public int getFloorNumber() { return floorNumber; }
+    public boolean isSuccess() { return success; }
+    public int getHeroHpRemaining() { return heroHpRemaining; }
+    public int getExpGained() { return expGained; }
+    public int getGoldGained() { return goldGained; }
 }
