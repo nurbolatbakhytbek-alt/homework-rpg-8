@@ -25,7 +25,7 @@ public class StunnedState implements HeroState {
     public HeroState transition(Hero hero) {
         turnsActive++;
         if (turnsActive >= MAX_TURNS) {
-            hero.getName(false);
+            hero.setStunned(false);
             return new NormalState();
         }
         return this;
